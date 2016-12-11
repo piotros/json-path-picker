@@ -52,6 +52,8 @@ $(function () {
     storeOptsInStorage();
   });
 
+  var $pathTarget = $('.path');
+
   $('#btn-json-path-picker').click(function () {
     try {
       var jsonData = eval('(' + $('#json-input').val() + ')');
@@ -60,7 +62,7 @@ $(function () {
       return alert("Cannot eval JSON: " + error);
     }
 
-    $('#json-renderer').jsonPathPicker(jsonData, opts);
+    $('#json-renderer').jsonPathPicker(jsonData, $pathTarget, opts);
   });
 
 });
