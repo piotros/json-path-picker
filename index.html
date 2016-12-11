@@ -4,14 +4,95 @@
   <title>JSON path picker</title>
   <meta charset="utf-8"/>
 
+  <link href="./styles.css" type="text/css" rel="stylesheet"/>
+  <link href="./lib/json-path-picker.css" type="text/css" rel="stylesheet"/>
 </head>
-<body>
- :)
+<body class="loading">
+
+<div class="sidebar">
+
+  <h1>JSON path picker</h1>
+
+  <div>
+    <button id="btn-json-path-picker" class="generate-button">
+      Generate tree <span style="display: none">(Ctrl + Q)</span>
+    </button>
+  </div>
+
+  <h2>Output options</h2>
+  <div class="options-group">
+    <label class="label">
+      <input type="checkbox" name="outputCollapsed">
+      Collapsed nodes
+    </label>
+    <label class="label">
+      <input type="checkbox" name="outputWithQuotes">
+      Keys with quotes
+    </label>
+  </div>
+
+  <h2>Path options</h2>
+  <div class="options-group">
+    <label class="label">
+      <input type="radio" name="pathNotation" value="dots">
+      Dot notation
+    </label>
+    <label class="label">
+      <input type="radio" name="pathNotation" value="brackets">
+      Bracket notation
+    </label>
+  </div>
+
+  <h2>Keys options</h2>
+  <div class="options-group">
+    <label class="label">
+      <input type="radio" name="pathQuotesType" value="single">
+      Single quotes
+    </label>
+    <label class="label">
+      <input type="radio" name="pathQuotesType" value="double">
+      Double quotes
+    </label>
+    <label class="label">
+      <input type="radio" name="pathQuotesType" value="none">
+      Without quotes
+    </label>
+  </div>
+
+  <div class="options-group">
+    <label class="label">
+      <input type="checkbox" name="processKeys">
+      Process keys
+    </label>
+    <div class="process-key-formula">
+      <pre>
+key.replace(
+  new RegExp('<input type="text" name="keyReplaceRegexPattern">', '<input type="text" name="keyReplaceRegexFlags">'),
+  '<input type="text" name="keyReplacementText">'
+)
+      </pre>
+    </div>
+  </div>
+
+</div>
+
+<div class="content">
+  <textarea id="json-input" autofocus placeholder="Paste JSON here!"></textarea>
+  <pre id="json-renderer" class="json-tree"></pre>
+</div>
+
+<div class="path-container">
+  <input class="path" type="text">
+</div>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="./lib/json-path-picker.js"></script>
+<script src="./scripts.js"></script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
   ga('create', 'UA-38852598-2', 'auto');
