@@ -98,7 +98,7 @@ pre {
   cursor: pointer;
   color: #65265b;
   font-size: 40px;
-  transition: font-size 0.2s, opacity 0.2s;
+  transition: transform 0.2s, opacity 0.2s;
   width: 50px;
   text-align: center;
   right: 5px;
@@ -112,7 +112,7 @@ pre {
 }
 
 .jump-to-top:hover {
-  font-size: 50px;
+  transform: rotate(45deg) translateY(-5px) translateX(-5px);
 }
 
 @keyframes octocat-wave {
