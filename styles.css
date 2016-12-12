@@ -24,14 +24,11 @@ pre {
   margin: 0;
 }
 
-textarea {
+.json-input {
   border: none;
   resize: none;
   border-bottom: 1px solid lightgray;
   padding: 10px 30px;
-}
-
-textarea#json-input {
   width: 100%;
   height: 200px;
 }
@@ -94,4 +91,43 @@ textarea#json-input {
 
 .process-key-formula input {
   width: 30px;
+}
+
+@keyframes octocat-wave {
+  0%, 100% {
+    transform: rotate(0);
+  }
+  20%, 60% {
+    transform: rotate(-25deg);
+  }
+  40%, 80% {
+    transform: rotate(10deg);
+  }
+}
+
+.github-corner .octo-box {
+  fill: #65265b;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  border: 0;
+  right: 0;
+}
+
+.github-corner .octo-arm {
+  transform-origin: 130px 106px;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
 }
