@@ -3,6 +3,7 @@ $(function () {
   var $optionsGroups = $('.options-group');
   var $jumpToTop = $('.jump-to-top');
   var $window = $(window);
+  var $document = $(document);
   var $pathTarget = $('.path');
 
   var opts;
@@ -65,7 +66,7 @@ $(function () {
     storeOptsInStorage();
   });
 
-  $('#btn-json-path-picker').click(function () {
+  var transformJson = function () {
     try {
       var jsonData = eval('(' + $('#json-input').val() + ')');
     }
@@ -76,6 +77,34 @@ $(function () {
     $('#json-renderer').jsonPathPicker(jsonData, $pathTarget, opts);
 
     toggleJumpToTopButton();
+  };
+
+  var isKeysCombinationActive = false;
+
+  var keys = {
+    q: 81,
+    ctrl: 17
+  };
+
+  $document.keydown(function (e) {
+    if (e.keyCode === keys.ctrl) {
+      isKeysCombinationActive = true;
+    }
   });
+
+  $document.keyup(function (e) {
+    if (e.keyCode === keys.ctrl) {
+      setTimeout(function () {
+        isKeysCombinationActive = false;
+      }, 50);
+    }
+
+    if (isKeysCombinationActive && e.keyCode === keys.q) {
+      isKeysCombinationActive = false;
+      transformJson();
+    }
+  });
+
+  $('#btn-json-path-picker').click(transformJson);
 
 });
