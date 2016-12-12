@@ -1,12 +1,21 @@
 $(function () {
 
   var $optionsGroups = $('.options-group');
+  var $jumpToTop = $('.jump-to-top');
+  var $window = $(window);
+  var $document = $(document);
+  var $pathTarget = $('.path');
 
   var opts;
 
   var defaultOpts = {
     pathNotation: 'dots',
     pathQuotesType: 'single'
+  };
+
+  var toggleJumpToTopButton = function () {
+    var isScrolled = $window.scrollTop() !== 0;
+    $jumpToTop.toggleClass('visible', isScrolled);
   };
 
   var loadOptsFromStorage = function () {
@@ -39,6 +48,11 @@ $(function () {
     $('body').removeClass('loading');
   })();
 
+  $window.scroll(_.debounce(toggleJumpToTopButton, 100));
+
+  $jumpToTop.click(function () {
+    $('html, body').animate({scrollTop: 0}, 'fast');
+  });
 
   $optionsGroups.find(':checkbox').change(function () {
     var optName = $(this).attr('name');
@@ -52,9 +66,7 @@ $(function () {
     storeOptsInStorage();
   });
 
-  var $pathTarget = $('.path');
-
-  $('#btn-json-path-picker').click(function () {
+  var transformJson = function () {
     try {
       var jsonData = eval('(' + $('#json-input').val() + ')');
     }
@@ -63,6 +75,36 @@ $(function () {
     }
 
     $('#json-renderer').jsonPathPicker(jsonData, $pathTarget, opts);
+
+    toggleJumpToTopButton();
+  };
+
+  var isKeysCombinationActive = false;
+
+  var keys = {
+    q: 81,
+    ctrl: 17
+  };
+
+  $document.keydown(function (e) {
+    if (e.keyCode === keys.ctrl) {
+      isKeysCombinationActive = true;
+    }
   });
+
+  $document.keyup(function (e) {
+    if (e.keyCode === keys.ctrl) {
+      setTimeout(function () {
+        isKeysCombinationActive = false;
+      }, 50);
+    }
+
+    if (isKeysCombinationActive && e.keyCode === keys.q) {
+      isKeysCombinationActive = false;
+      transformJson();
+    }
+  });
+
+  $('#btn-json-path-picker').click(transformJson);
 
 });

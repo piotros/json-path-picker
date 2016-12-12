@@ -1,0 +1,22 @@
+{
+  "name": "json-path-picker",
+  "version": "0.1.0",
+  "description": "jQuery plugin for displaying JSON data with path picker feature",
+  "author": "Piotr 'piotros' Baran",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/piotros/json-path-picker.git"
+  },
+  "keywords": [
+    "json",
+    "json-path-picker",
+    "json2html",
+    "jquery",
+    "jquery-plugin"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/piotros/json-path-picker/issues"
+  },
+  "homepage": "https://github.com/piotros/json-path-picker"
+}
