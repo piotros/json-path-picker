@@ -93,6 +93,28 @@ pre {
   width: 30px;
 }
 
+.jump-to-top {
+  position: fixed;
+  cursor: pointer;
+  color: #65265b;
+  font-size: 40px;
+  transition: font-size 0.2s, opacity 0.2s;
+  width: 50px;
+  text-align: center;
+  right: 5px;
+  bottom: 55px;
+  transform: rotate(45deg);
+  opacity: 0;
+}
+
+.jump-to-top.visible {
+  opacity: 1;
+}
+
+.jump-to-top:hover {
+  font-size: 50px;
+}
+
 @keyframes octocat-wave {
   0%, 100% {
     transform: rotate(0);
