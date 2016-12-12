@@ -1,6 +1,6 @@
 {
   "name": "json-path-picker",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "jQuery plugin for displaying JSON data with path picker feature",
   "author": "Piotr 'piotros' Baran",
   "repository": {
