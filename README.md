@@ -4,6 +4,8 @@
 The main difference to other JSON viewers is that **JSON path picker** allows to find a path to the key by clicking an icon near to the key name. 
 This simplifies process of creating [JSONPaths](http://goessner.net/articles/JsonPath/) based on mocked responses.
  
+![JSON path picker demo](json-path-picker.gif)
+ 
 JSON path picker can be also used in your app. Core features are packed as jQuery plugin. Read more about [plugin installation](#plugin-installation), [usage](#plugin-usage) and [options](#plugin-options).
 
 ## Features
